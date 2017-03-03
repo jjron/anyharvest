@@ -1,0 +1,59 @@
+{
+  "name": "anyharvest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "6.9.2"
+  },
+  "scripts": {
+    "start": "node main.js",
+    "heroku-postbuild": "./node_modules/webpack/bin/webpack.js",
+    "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
+    "test": "./node_modules/mocha/bin/mocha ./server/test",
+    "debug": "DEBUG=anyharvest* npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjron/anyharvest.git"
+  },
+  "keywords": [],
+  "author": "jaren, geno, david, thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjron/anyharvest/issues"
+  },
+  "homepage": "https://github.com/jjron/anyharvest#readme",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-animate": "^1.6.2",
+    "angular-touch": "^1.6.2",
+    "angular-ui-router": "^0.4.2",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "body-parser": "^1.17.0",
+    "chai": "^3.5.0",
+    "cors": "^2.8.1",
+    "css-loader": "^0.26.2",
+    "debug": "^2.6.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.0",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.10.1",
+    "firebase": "^3.7.0",
+    "firebase-admin": "^4.1.2",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "http-errors": "^1.6.1",
+    "mocha": "^3.2.0",
+    "morgan": "^1.8.1",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.2",
+    "superagent": "^3.5.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.2.1",
+    "webpack-clean-plugin": "^0.2.3",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
