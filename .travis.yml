@@ -4,7 +4,7 @@ node_js:
 deploy:
   provider: firebase
   token:
-    secure: "AIzaSyCHCFJoq3pdeTSQxS3AR9u1zjZM43LNT0o"
+    secure: process.env.FIREBASE_WEB_API_KEY
   project: "anyharvest"
 addons:
   apt:
