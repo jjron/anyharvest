@@ -1,3 +1,6 @@
+# Anyharvest Git Ignore
+coverage
+html-reporter
 .env
 mock-env.js
 
