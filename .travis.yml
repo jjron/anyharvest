@@ -1,11 +1,8 @@
 language: node_js
 node_js:
   - '6'
-deploy:
-  provider: firebase
-  token:
-    secure: process.env.FIREBASE_WEB_API_KEY
-  project: "anyharvest"
+services:
+  - mongodb
 addons:
   apt:
     sources:

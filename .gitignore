@@ -2,7 +2,7 @@
 coverage
 html-reporter
 .env
-mock-env.js
+db
 
 # Created by https://www.gitignore.io/api/git,node,windows,linux,osx,vim
 
