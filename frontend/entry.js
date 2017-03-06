@@ -1,0 +1,32 @@
+'use strict';
+
+require('./scss/main.scss');
+
+const angular = require('angular');
+const uiRouter = require('angular-ui-router');
+
+angular.module('anyHarvest', [uiRouter])
+.config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.when('', '/home');
+  let routes = [
+    {
+      name: 'landing',
+      url: '/landing',
+      template: '<landing></landing>',
+    },
+    {
+      name: 'dashboard',
+      url: '/dashboard',
+      template: '<dashboard></dashboard>',
+    },
+  ];
+
+  routes.forEach(route => $stateProvider.state(route));
+}]);
+
+// require services
+
+// require containers
+
+
+// require components
