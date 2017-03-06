@@ -13,6 +13,8 @@ mongoose.connect(process.env.MONGODB_URI);
 
 app.use(cors());
 app.use(morgan(process.env.LOG_FORMAT));
+console.log('asdf', process.env.LOG_FORMAT, process.env.PORT);
+app.use(require('./router/auth-router.js'));
 
 app.use(express.static(`${__dirname}/../build`));
 app.get('*', (req, res) => res.redirect('/'));
