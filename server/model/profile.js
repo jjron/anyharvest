@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
   userName: {type: String, required: true},
-  email: {type: String},
+  email: {type: String, required: true},
   profilePic: {type: mongoose.Schema.Types.ObjectId},
   listings: [{type: mongoose.Schema.Types.ObjectId, ref: 'listing'}],
   zipCode: {type: String, required: true},
