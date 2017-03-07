@@ -83,7 +83,7 @@ listingRouter.get('/api/listings', function(req, res, next) {
   debug('GET /api/listings');
   Listing.find({})
   .then(listings => res.json(listings))
-  .catch(err => next(createError(404, err.message)));
+  .catch(next);
 });
 
 //route for editing your own listings
