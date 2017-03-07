@@ -101,5 +101,41 @@ describe('testing profile-router', function () {
       })
       .catch(done);
     });
+    it('should upload a profile pic', done => {
+      let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}/profilepic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', ``)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(400);
+        done();
+      })
+      .catch(done);
+    });
+    it('should respond with 401', done => {
+      let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}/profilepic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer badtoken`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
+    it('should return a 404 when profile not found', (done) => {
+      let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}/profilepuck`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(404);
+        done();
+      })
+      .catch(done);
+    });
   });
 });

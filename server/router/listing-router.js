@@ -79,7 +79,7 @@ listingRouter.get('/api/listings/me/mylistings', bearerAuth, function(req, res, 
 });
 
 // route for getting everyone's listings
-listingRouter.get('/api/listings', bearerAuth, function(req, res, next) {
+listingRouter.get('/api/listings', function(req, res, next) {
   debug('GET /api/listings');
   Listing.find({})
   .then(listings => res.json(listings))
