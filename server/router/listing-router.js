@@ -5,30 +5,39 @@ const jsonParser = require('body-parser').json();
 const createError = require('http-errors');
 const debug = require('debug')('anyharvest:listing-router');
 
+const Profile = require('../model/profile.js');
 const Listing = require('../model/listing.js');
 const bearerAuth = require('../lib/bearer-auth.js');
-/*
-  post a new listing
-  get a single listing
-  get all listings
-  put edit a listing
-*/
+
 const listingRouter = module.exports = new Router();
 
-listingRouter.post('/api/listings', bearerAuth, jsonParser, function(req, res, next){
+listingRouter.post('/api/profile/:profileID/listings', bearerAuth, jsonParser, function(req, res, next){
   debug('POST api/listings');
-  if(!req.body.product || !req.body.desc || !req.body.zipCode || !req.body.profileID)
-    return next(createError(400, 'requires description'));
+  if(!req.body.product || !req.body.desc || !req.body.zipCode)
+    return next(createError(400, 'missing required values'));
 
-  new Listing({
-    product: req.body.product,
-    desc: req.body.desc,
-    zipCode: req.body.zipCode,
-    photoID: req.body.photoID,
-    profileID: req.body.profileID,
-    userID: req.user._id.toString(),
-  }).save()
-  .then(listing => res.json(listing))
+  let tempProfile, tempListing;
+  Profile.findById(req.params.profileID)
+  .catch(err => Promise.reject(createError(404, err.message)))
+  .then(profile => {
+    return profile ? Promise.resolve(profile) : Promise.reject(createError(404, 'no profile'));
+  })
+  .then(profile => {
+    tempProfile = profile;
+    return new Listing({
+      product: req.body.product,
+      desc: req.body.desc,
+      zipCode: req.body.zipCode,
+      photoID: req.body.photoID,
+      userID: req.user._id.toString(),
+    }).save();
+  })
+  .then(listing => {
+    tempListing = listing;
+    tempProfile.listings.push(listing._id);
+    return tempProfile.save();
+  })
+  .then(() => res.json(tempListing))
   .catch(next);
 });
 

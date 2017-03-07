@@ -24,16 +24,15 @@ describe('testing post-router', function() {
     .catch(done);
   });
 
-  describe('testing POST /api/listings', function() {
+  describe('testing POST /api/profile/:profileID/listings', function() {
     beforeEach(userMock.bind(this));
     beforeEach(profileMock.bind(this));
     it('should respond with a post', done => {
-      superagent.post(`${baseURL}/api/listings`)
+      superagent.post(`${baseURL}/api/profile/${this.tempProfile._id.toString()}/listings`)
       .send({
         product: 'peas',
         desc: 'so green',
         zipCode: '55555',
-        profileID: this.tempProfile._id.toString(),
       })
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(res => {
@@ -49,7 +48,7 @@ describe('testing post-router', function() {
     });
 
     it('should respond with a 400 bad request', done => {
-      superagent.post(`${baseURL}/api/listings`)
+      superagent.post(`${baseURL}/api/profile/${this.tempProfile._id.toString()}/listings`)
       .send({})
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(done)
@@ -61,12 +60,11 @@ describe('testing post-router', function() {
     });
 
     it('should respond with a 401 unauthorized', done => {
-      superagent.post(`${baseURL}/api/listings`)
+      superagent.post(`${baseURL}/api/profile/${this.tempProfile._id.toString()}/listings`)
       .send({
         product: 'peas',
         desc: 'so green',
         zipCode: '55555',
-        profileID: this.tempProfile._id.toString(),
       })
       .set('Authorization', 'Bearer badtoken')
       .then(done)
@@ -83,7 +81,6 @@ describe('testing post-router', function() {
         product: 'peas',
         desc: 'so green',
         zipCode: '55555',
-        profileID: this.tempProfile._id.toString(),
       })
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(done)
@@ -110,7 +107,6 @@ describe('testing post-router', function() {
         expect(res.body[0].zipCode).to.equal(this.tempListing.zipCode);
         expect(res.body[0].active).to.equal(this.tempListing.active);
         expect(res.body[0].userID).to.equal(this.tempUser._id.toString());
-        expect(res.body[0].profileID).to.equal(this.tempProfile._id.toString());
         done();
       })
       .catch(done);
@@ -154,7 +150,6 @@ describe('testing post-router', function() {
         expect(res.body.active).to.equal(this.tempListing.active);
         expect(res.body.zipCode).to.equal(this.tempListing.zipCode);
         expect(res.body.userID).to.equal(this.tempUser._id.toString());
-        expect(res.body.profileID).to.equal(this.tempProfile._id.toString());
         done();
       })
       .catch(done);
@@ -226,7 +221,6 @@ describe('testing post-router', function() {
         expect(res.body.active).to.equal(this.tempListing.active);
         expect(res.body.zipCode).to.equal('88888');
         expect(res.body.userID).to.equal(this.tempUser._id.toString());
-        expect(res.body.profileID).to.equal(this.tempProfile._id.toString());
         done();
       })
       .catch(done);
@@ -247,7 +241,7 @@ describe('testing post-router', function() {
 
     it('should respond with a 401 unauthorized', done => {
       superagent.put(`${baseURL}/api/listings/me/mylistings/${this.tempListing._id.toString()}`)
-      .send({description: 'updated description'})
+      .send({desc: 'updated desc'})
       .set('Authorization', `Bearer badtoken`)
       .then(done)
       .catch(err => {
@@ -259,7 +253,7 @@ describe('testing post-router', function() {
 
     it('should respond with a 404 not found', done => {
       superagent.put(`${baseURL}/api/listings/me/mylistings/hacktheplanet`)
-      .send({description: 'updated description'})
+      .send({desc: 'updated description'})
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(done)
       .catch(err => {

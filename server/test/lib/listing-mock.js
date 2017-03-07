@@ -9,7 +9,6 @@ module.exports = function(done) {
     product: 'listing' + Math.random(),
     desc: 'desc' + Math.random(),
     zipCode: '12345',
-    profileID: this.tempProfile._id.toString(),
     userID: this.tempUser._id.toString(),
   }).save()
   .then(listing => {
