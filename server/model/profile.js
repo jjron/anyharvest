@@ -9,6 +9,8 @@ const profileSchema = mongoose.Schema({
   listings: [{type: mongoose.Schema.Types.ObjectId, ref: 'listing'}],
   zipCode: {type: String, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
+  photoURI: {type: String},
+  imageKey: {type: String, unique: true},
 });
 
 module.exports = mongoose.model('profile', profileSchema);

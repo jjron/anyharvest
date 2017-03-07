@@ -86,4 +86,20 @@ describe('testing profile-router', function () {
       .catch(done);
     });
   });
+
+  describe('testing PUT /api/profiles/:id/profilepic', function() {
+    beforeEach(userMock.bind(this));
+    beforeEach(profileMock.bind(this));
+    it('should upload a profile pic', done => {
+      let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}/profilepic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(res => {
+        expect(res.status).to.equal(200);
+        done();
+      })
+      .catch(done);
+    });
+  });
 });
