@@ -1,15 +1,34 @@
 'use strict';
 
+const fs = require('fs');
+const del = require('del');
+const path = require('path');
+const AWS = require('aws-sdk');
+const multer = require('multer');
 const {Router} = require('express');
-const jsonParser = require('body-parser').json();
 const createError = require('http-errors');
+const jsonParser = require('body-parser').json();
 const debug = require('debug')('anyharvest:listing-router');
 
 const Profile = require('../model/profile.js');
 const Listing = require('../model/listing.js');
 const bearerAuth = require('../lib/bearer-auth.js');
-
 const listingRouter = module.exports = new Router();
+
+AWS.config.setPromisesDependency(require('bluebird'));
+
+const s3 = new AWS.S3();
+const dataDir = `${__dirname}/../data`;
+const upload = multer({dest: dataDir});
+
+function s3Promise(params){
+  return new Promise((resolve, reject) => {
+    s3.upload(params, (err, s3data) => {
+      if (err) return reject(err);
+      resolve (s3data);
+    });
+  });
+}
 
 listingRouter.post('/api/profile/:profileID/listings', bearerAuth, jsonParser, function(req, res, next){
   debug('POST api/listings');
@@ -74,4 +93,41 @@ listingRouter.put('/api/listings/me/mylistings/:id', bearerAuth, jsonParser, fun
   .then(listing => res.json(listing))
   .catch(() => next(createError(404, 'didn\'t find the listing')))
   .catch(next); //double check this potential 400 error
+});
+
+listingRouter.put('/api/listings/:id/listingpic', bearerAuth, upload.single('file'), function(req, res, next){
+  debug('PUT /api/listings/:id/listingpic');
+  if(!req.file)
+    return next(createError(400, 'no file'));
+  console.log('listing id:', req.params.id);
+  Listing.findById(req.params.id)
+  .catch(err => Promise.reject(createError(404, err.message)))
+  .then(listing => {
+    console.log('listing', listing);
+    if(listing.userID.toString() !== req.user._id.toString()) {
+      return Promise.reject(createError(401, 'User not authorized'));
+    }
+    return s3Promise({
+      ACL: 'public-read',
+      Bucket: process.env.AWS_BUCKET,
+      Key: `${req.file.filename}${path.extname(req.file.originalname)}`,
+      Body: fs.createReadStream(req.file.path),
+    });
+  })
+  .catch(err => err.status ? Promise.reject(err) : Promise.reject(createError(500, err.message)))
+  .then(s3data => {
+    del([`${dataDir}/*`]);
+    var photoData = {
+      imageKey: s3data.Key,
+      photoURI: s3data.Location,
+    };
+    Listing.findOneAndUpdate({userID: req.user._id.toString(), _id:req.params.id}, photoData, {new: true})
+    .then(listing => res.json(listing))
+    .catch(() => next(createError(404, 'no listing found')))
+    .catch(next);
+  })
+  .catch(err => {
+    del([`${dataDir}/*`]);
+    next(err);
+  });
 });
