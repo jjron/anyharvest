@@ -45,10 +45,7 @@ profileRouter.post('/api/profiles', bearerAuth, jsonParser, function(req, res, n
   .then(profile => {
     res.json(profile);
   })
-  .catch( err => {
-    console.log('some random string', err);
-    next();
-  });
+  .catch(next);
 });
 
 profileRouter.put('/api/profiles/:id/profilepic', bearerAuth, upload.single('file'), function(req, res, next){
@@ -98,7 +95,7 @@ profileRouter.get('/api/profiles/:id', function(req, res, next) {
 profileRouter.put('/api/profiles/:id', bearerAuth, jsonParser, function(req, res, next) {
   debug('PUT /api/profiles/:id');
   Profile.findOneAndUpdate({userID: req.user._id.toString(), _id:req.params.id}, req.body, {new: true})
-  .then(profile => req.json(profile))
+  .then(profile => res.json(profile))
   .catch(() => next(createError(404, 'no profile found')))
   .catch(next);
 });
