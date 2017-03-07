@@ -7,7 +7,7 @@ const uiRouter = require('angular-ui-router');
 
 angular.module('anyHarvest', [uiRouter])
 .config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('', '/home');
+  $urlRouterProvider.when('', '/landing');
   let routes = [
     {
       name: 'landing',

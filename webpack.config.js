@@ -8,7 +8,7 @@ const ExtractText = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
-  entry: `${__dirname}/app/entry.js`,
+  entry: `${__dirname}/frontend/entry.js`,
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle.js',
@@ -18,7 +18,7 @@ module.exports = {
   },
   plugins: [
     new ExtractText('bundle.css'),
-    new HTMLPlugin({template: `${__dirname}/app/index.html`}),
+    new HTMLPlugin({template: `${__dirname}/frontend/index.html`}),
     new webpack.DefinePlugin({
       __API_URL__: JSON.stringify(process.env.API_URL),
     }),
