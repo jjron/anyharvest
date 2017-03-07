@@ -74,6 +74,21 @@ describe('testing post-router', function() {
       })
       .catch(done);
     });
+    it('should respond with a 404 not found', done => {
+      superagent.post(`${baseURL}/api/profile/${this.tempProfile._id.toString()}bad/listings`)
+      .send({
+        product: 'peas',
+        desc: 'so green',
+        zipCode: '55555',
+      })
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .then(done)
+      .catch(err => {
+        expect(err.status).to.equal(404);
+        done();
+      })
+      .catch(done);
+    });
 
     it('should respond with a 404 not found', done => {
       superagent.post(`${baseURL}/api/lists`)
