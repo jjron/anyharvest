@@ -25,6 +25,7 @@ app.get('*', (req, res) => res.redirect('/'));
 app.use((err, req, res, next) => {
   debug('error middleware');
   console.error(err.message);
+  console.log('err:', err);
   if(err.status) return res.sendStatus(err.status);
   if(err.name === 'ValidationError') return res.sendStatus(400);
   if(err.name === 'MongoError' && err.code == '11000')

@@ -173,21 +173,9 @@ describe('testing post-router', function() {
 
     it('should respond with all the listings', done => {
       superagent.get(`${baseURL}/api/listings`)
-      .set('Authorization', `Bearer ${this.tempToken}`)
       .then(res => {
         expect(res.status).to.equal(200);
         expect(res.body).to.be.instanceof(Array);
-        done();
-      })
-      .catch(done);
-    });
-
-    it('should respond with 401 unauthorized', done => {
-      superagent.get(`${baseURL}/api/listings`)
-      .set('Authorization', `Bearer badtoken`)
-      .then(done)
-      .catch(err => {
-        expect(err.status).to.equal(401);
         done();
       })
       .catch(done);
@@ -258,6 +246,58 @@ describe('testing post-router', function() {
       .then(done)
       .catch(err => {
         expect(err.status).to.equal(404);
+        done();
+      })
+      .catch(done);
+    });
+  });
+  describe('testing PUT /api/listings/:id/listingpic', function() {
+    beforeEach(userMock.bind(this));
+    beforeEach(profileMock.bind(this));
+    beforeEach(listingMock.bind(this));
+    it('should upload a listing pic', done => {
+      let url = `${baseURL}/api/listings/${this.tempListing._id.toString()}/listingpic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(res => {
+        expect(res.status).to.equal(200);
+        done();
+      })
+      .catch(done);
+    });
+    it('should upload a listing pic', done => {
+      let url = `${baseURL}/api/listings/${this.tempListing._id.toString()}/listingpic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', ``)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(400);
+        done();
+      })
+      .catch(done);
+    });
+    it('should respond with 401', done => {
+      let url = `${baseURL}/api/listings/${this.tempListing._id.toString()}/listingpic`;
+      superagent.put(url)
+      .set('Authorization', `Bearer badtoken`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(401);
+        done();
+      })
+      .catch(done);
+    });
+    it('should return a 404 when profile not found', (done) => {
+      let url = `${baseURL}/api/listings/${this.tempListing._id.toString()}/profilepuck`;
+      superagent.put(url)
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .attach('file', `${__dirname}/../../assets/logo_assets/leaf.png`)
+      .then(done)
+      .catch(res => {
+        expect(res.status).to.equal(404);
         done();
       })
       .catch(done);
