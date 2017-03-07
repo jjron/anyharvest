@@ -7,7 +7,7 @@ const listingSchema = mongoose.Schema({
   product: {type: String, required: true},
   desc: {type: String, required: true},
   zipCode: {type: String, required: true},
-  active: {type: Boolean, required: true},
+  active: {type: Boolean, default: false},
   photoID: {type: mongoose.Schema.Types.ObjectId},
   profileID: {type: mongoose.Schema.Types.ObjectId, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},

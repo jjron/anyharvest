@@ -17,7 +17,7 @@ const listingRouter = module.exports = new Router();
 
 listingRouter.post('/api/listings', bearerAuth, jsonParser, function(req, res, next){
   debug('POST api/listings');
-  if(!req.body.description)
+  if(!req.body.product || !req.body.desc || !req.body.zipCode || !req.body.profileID)
     return next(createError(400, 'requires description'));
 
   new Listing({
