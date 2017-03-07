@@ -87,6 +87,22 @@ describe('testing profile-router', function () {
     });
   });
 
+  describe('testing PUT /api/profiles/:id', function(){
+    beforeEach(userMock.bind(this));
+    beforeEach(profileMock.bind(this));
+    it('should update a profile', done => {
+      let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}`;
+      superagent.put(url)
+      .send({userName: 'agroGurl'})
+      .set('Authorization', `Bearer ${this.tempToken}`)
+      .then(res => {
+        expect(res.status).to.equal(200);
+        done();
+      })
+      .catch(done);
+    });
+  });
+  
   describe('testing PUT /api/profiles/:id/profilepic', function() {
     beforeEach(userMock.bind(this));
     beforeEach(profileMock.bind(this));
