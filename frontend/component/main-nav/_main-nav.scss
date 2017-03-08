@@ -1,14 +1,11 @@
 @import  "../../scss/_theme.scss";
-.main-nav {
-  width: 50%;
-  box-sizing: border-box;
-  display: inline-block;
+
   ul {
   list-style: none;
+  display: inline-block;
   }
   li {
     width: auto;
     margin-left: $s-margin-left;
     display: inline-block;
   }
-}
