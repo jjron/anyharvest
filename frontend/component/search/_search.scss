@@ -1,0 +1,13 @@
+@import  "../../scss/_theme.scss";
+
+.search {
+  width: 49%;
+  padding: $s-pad;
+  margin-left: $s-margin-left;
+  display: inline-block;
+}
+.search-input {
+  width: 50%;
+  padding: $s-pad;
+  margin-left: $s-margin-left;
+}
