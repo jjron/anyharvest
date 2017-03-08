@@ -1,8 +1,23 @@
-<div class="signup">
+<div class="signup col-md-6">
   <form ng-submit="$ctrl.handleSubmit($ctrl.user)" novalidate>
-    <input type="email" ng-model="$ctrl.user.email" placeholder="email">
-    <input type="username" ng-model="$ctrl.user.username" placeholder="username">
-    <input type="password" ng-model="$ctrl.user.password" placeholder="password">
-    <button>signup</button>
+    <div class="form-group">
+      <input type="email"
+        ng-model="$ctrl.user.email"
+        placeholder="email"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="username"
+        ng-model="$ctrl.user.username"
+        placeholder="username"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="password"
+        ng-model="$ctrl.user.password"
+        placeholder="password"
+        class="form-control">
+    </div>
+    <button class="btn btn-default">signup</button>
   </form>
 </div>
