@@ -32,6 +32,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: [/node_modules/],
         loader: ExtractText.extract(['css-loader', 'sass-loader']),
       },
       {

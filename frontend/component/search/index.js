@@ -1,11 +1,13 @@
 'use strict';
 
+require('./_search.scss');
+
 require('angular').module('anyHarvest')
 .component('search', {
   template: require('./search.html'),
   bindings: {
-    pages: '<',
+    products: '<',
     handleSelect: '<',
-    searchterm: '=',
+    searchterm: '<',
   },
 });

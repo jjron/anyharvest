@@ -32,6 +32,7 @@ require('./container/landing');
 // require('./container/dashboard');
 
 // require components
+require('./component/header');
 require('./component/login-form');
 require('./component/main-nav');
 require('./component/search');

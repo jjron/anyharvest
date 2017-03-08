@@ -1,0 +1,10 @@
+@import  "../../scss/_theme.scss";
+.main-nav {
+  list-style: none;
+  width: 49%;
+  margin-left: $s-margin-left;
+  li {
+    display: inline-block;
+    width: auto;
+  }
+}
