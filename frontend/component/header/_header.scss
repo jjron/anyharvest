@@ -1,11 +1,13 @@
 @import  "../../scss/_theme.scss";
 .header {
   background: $c-greylight;
-  color: $c-white;
   padding: $s-pad;
 }
 .logo {
   margin-left: $s-margin-left;
   margin-right: $s-margin-right;
   width: 80%;
+}
+.container {
+  width: 100%;
 }
