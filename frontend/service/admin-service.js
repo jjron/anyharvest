@@ -1,6 +1,6 @@
 'use strict';
 
-require('angular').module('myBlogAssignment')
+require('angular').module('anyHarvest')
 .service('authService', ['$log', '$q', '$window', '$http', authService]);
 
 function authService($log, $q, $window, $http) {
@@ -18,7 +18,7 @@ function authService($log, $q, $window, $http) {
   };
 
   let authService = {};
-  
+
   let saveToken = (token) => {
     if (!token) return $q.reject('no token');
     try {
