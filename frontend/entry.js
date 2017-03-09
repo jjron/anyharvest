@@ -5,8 +5,9 @@ require('./scss/main.scss');
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 const ngFileUpload = require('ng-file-upload');
+const creditCards =  require('angular-credit-cards');
 
-angular.module('anyHarvest', [uiRouter, ngFileUpload])
+angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
 .config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('', '/landing');
   let routes = [
@@ -34,6 +35,11 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload])
       name: 'company',
       url: '/company',
       template: '<company></company>',
+    },
+    {
+      name: 'oneListing',
+      url: '/one-listing',
+      template: '<one-listing></one-listing>',
     },
     {
       name: 'about-us',
