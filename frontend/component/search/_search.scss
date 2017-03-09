@@ -1,15 +1,17 @@
 @import  "../../scss/_theme.scss";
 
 .search {
- 
-  .input-group-addon {
-    width: 100%;
+  padding: $s-pad;
+  box-sizing: border-box;
+}
+.input-group-btn {
+}
+.glyphicon {
+  margin-right: $s-margin-right;
+  color: $c-greylight;
+  .glyphicon-search {
   }
-  .glyphicon {
-    width: 20%;
-  }
-  .search-input {
-    width: 78%;
-    display: inline-block;
-  }
+}
+.search-input {
+  padding: $s-pad;
 }
