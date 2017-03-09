@@ -25,7 +25,6 @@ stripeRouter.post('/api/charge/:listingID', bearerAuth, jsonParser, function(req
     email: 'foo-customer@example.com',
   })
   .then(customer => {
-    console.log('req', req);
     return stripe.customers.createSource(customer.id, {
       source: {
         object: 'card',
@@ -46,6 +45,7 @@ stripeRouter.post('/api/charge/:listingID', bearerAuth, jsonParser, function(req
   .then(charge => {
     // New charge created on a new customer
     console.log('charge success!', charge);
+    res.json(charge);
   })
   .catch(err => {
     // Deal with an error
