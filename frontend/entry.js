@@ -65,9 +65,9 @@ require('./container/landing');
 require('./container/new-listing');
 require('./container/photo-listing');
 require('./container/photo-profile');
+require('./container/account');
 
 // require components
-require('./container/account');
 require('./component/dash-nav');
 require('./component/header');
 require('./component/header');
