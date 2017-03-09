@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv').config({path: `${__dirname}/../../../.env`});
 process.env.PORT=3000;
 process.env.LOG_FORMAT='dev';
 process.env.API_URL='http://localhost:3000';

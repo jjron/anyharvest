@@ -46,6 +46,7 @@ listingRouter.post('/api/profile/:profileID/listings', bearerAuth, jsonParser, f
     return new Listing({
       product: req.body.product,
       desc: req.body.desc,
+      price: req.body.price,
       zipCode: req.body.zipCode,
       photoID: req.body.photoID,
       userID: req.user._id.toString(),
