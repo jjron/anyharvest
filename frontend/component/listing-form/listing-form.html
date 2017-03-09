@@ -2,6 +2,12 @@
   <form ng-submit="$ctrl.handleSubmit($ctrl.listing)" novalidate>
     <input type="title" ng-model="$ctrl.listing.title" placeholder="title">
     <input type="description" ng-model="$ctrl.listing.description" placeholder="description">
+    <input type="text" ng-model="$ctrl.listing.startingPrice" placeholder="Starting Price">
+    <!-- photo upload goes here -->
+    <label class="photo-upload">
+      <input type="file" id="file" class="custom-file-input">
+      <span class="photo-upload-control"></span>
+    </label>
     <button>submit</button>
   </form>
 </div>
