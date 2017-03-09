@@ -11,7 +11,7 @@ const listingMock = require('./lib/listing-mock.js');
 const serverControl = require('./lib/server-control.js');
 const baseURL = process.env.API_URL;
 
-describe('testing post-router', function() {
+describe('testing listing-router', function() {
   before(serverControl.start);
   after(serverControl.stop);
   afterEach(done => {
@@ -32,6 +32,7 @@ describe('testing post-router', function() {
       .send({
         product: 'peas',
         desc: 'so green',
+        price: 42,
         zipCode: '55555',
       })
       .set('Authorization', `Bearer ${this.tempToken}`)
@@ -39,6 +40,7 @@ describe('testing post-router', function() {
         expect(res.status).to.equal(200);
         expect(res.body.product).to.equal('peas');
         expect(res.body.desc).to.equal('so green');
+        expect(res.body.price).to.equal(42);
         expect(res.body.zipCode).to.equal('55555');
         expect(res.body.active).to.equal(false);
         expect(res.body.userID).to.equal(this.tempUser._id.toString());
@@ -64,6 +66,7 @@ describe('testing post-router', function() {
       .send({
         product: 'peas',
         desc: 'so green',
+        price: 42,
         zipCode: '55555',
       })
       .set('Authorization', 'Bearer badtoken')
@@ -79,6 +82,7 @@ describe('testing post-router', function() {
       .send({
         product: 'peas',
         desc: 'so green',
+        price: 42,
         zipCode: '55555',
       })
       .set('Authorization', `Bearer ${this.tempToken}`)
@@ -95,6 +99,7 @@ describe('testing post-router', function() {
       .send({
         product: 'peas',
         desc: 'so green',
+        price: 42,
         zipCode: '55555',
       })
       .set('Authorization', `Bearer ${this.tempToken}`)
@@ -119,6 +124,7 @@ describe('testing post-router', function() {
         expect(res.body).to.be.instanceof(Array);
         expect(res.body[0].product).to.equal(this.tempListing.product);
         expect(res.body[0].desc).to.equal(this.tempListing.desc);
+        expect(res.body[0].price).to.equal(this.tempListing.price);
         expect(res.body[0].zipCode).to.equal(this.tempListing.zipCode);
         expect(res.body[0].active).to.equal(this.tempListing.active);
         expect(res.body[0].userID).to.equal(this.tempUser._id.toString());
@@ -162,6 +168,7 @@ describe('testing post-router', function() {
         expect(res.status).to.equal(200);
         expect(res.body.product).to.equal(this.tempListing.product);
         expect(res.body.desc).to.equal(this.tempListing.desc);
+        expect(res.body.price).to.equal(this.tempListing.price);
         expect(res.body.active).to.equal(this.tempListing.active);
         expect(res.body.zipCode).to.equal(this.tempListing.zipCode);
         expect(res.body.userID).to.equal(this.tempUser._id.toString());
@@ -215,14 +222,15 @@ describe('testing post-router', function() {
 
     it('should respond with an updated post', done => {
       superagent.put(`${baseURL}/api/listings/me/mylistings/${this.tempListing._id.toString()}`)
-      .send({desc: 'the peas are so green', zipCode: '88888'})
+      .send({desc: 'the peas are so green', price: 84})
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(res => {
         expect(res.status).to.equal(200);
         expect(res.body.product).to.equal(this.tempListing.product);
         expect(res.body.desc).to.equal('the peas are so green');
+        expect(res.body.price).to.equal(84);
         expect(res.body.active).to.equal(this.tempListing.active);
-        expect(res.body.zipCode).to.equal('88888');
+        expect(res.body.zipCode).to.equal(this.tempListing.zipCode);
         expect(res.body.userID).to.equal(this.tempUser._id.toString());
         done();
       })

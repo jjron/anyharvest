@@ -8,6 +8,7 @@ module.exports = function(done) {
   new Listing({
     product: 'listing' + Math.random(),
     desc: 'desc' + Math.random(),
+    price: 100,
     zipCode: '12345',
     userID: this.tempUser._id.toString(),
   }).save()
