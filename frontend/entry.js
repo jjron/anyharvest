@@ -77,3 +77,4 @@ require('./component/main-nav');
 require('./component/one-listing');
 require('./component/search');
 require('./component/signup-form');
+require('./component/credit-card');
