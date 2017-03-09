@@ -2,14 +2,14 @@
 
 @mixin base {
   body, body * {
-    width: 100%;
+    // width: 100%;
     box-sizing: border-box;
     color: $c-grey;
     font-size: 4vw;
     font-family: sans-serif;;
     font-stretch: extra-condensed;
-    margin-bottom: $s-margin-bottom;
-    padding-top: $s-pad-top;
+    margin: 0;
+    padding: 0;
 
     @media screen and (min-width: 400px){
       font-size: 3vw;
@@ -29,7 +29,7 @@
   }
 
   body {
-    padding: $s-pad * 4.1;
+    padding: 0;
   }
 
   button, a , input, select {
@@ -66,8 +66,8 @@
   }
 
   ul, ol {
-    margin-left: $s-pad * 2;
-    padding-left: $s-pad * 2;
+    margin-left: $s-pad;
+    padding-left: $s-pad;
     color: $c-black;
 
     ul {
@@ -80,7 +80,7 @@
   }
 
   ul {
-    list-style: initial;
+    list-style: none;
   }
 
   ol {

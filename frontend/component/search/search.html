@@ -1,10 +1,9 @@
-<div class="search">
-  <div class="input-group-addon" id="basic-addon-search">
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <input class="search-input form-control" ng-model="$ctrl.searchterm" aria-describedby="basic-addon-search">
-  </div>
-    <li ng-repeat="item in $ctrl.products |pageSearchFilter:$ctrl.searchterm " ng-click="$ctrl.handleSelect(item)">
-      {{ item.title }}
-    </li>
-  </ul>
+<div class="search input-group pull-right">
+  <span class="input-group-btn">
+    <button class="btn btn-default " type="button">
+      <span class="glyphicon glyphicon-search"
+      aria-hidden="true"></span>
+    </button>
+  </span>
+  <input type="text" class="form-control" placeholder="Search for...">
 </div>
