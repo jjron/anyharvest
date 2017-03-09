@@ -21,8 +21,8 @@ require('angular').module('anyHarvest')
       return res.data;
     });
   };
-  profileService.fetch = (profile) => {
-    let url = `${__API_URL__}/api/profiles/${profile.id}`;
+  profileService.fetch = () => {
+    let url = `${__API_URL__}/api/profiles/me`;
     let config = {
       headers: {
         Accept: 'application/json',
@@ -30,7 +30,7 @@ require('angular').module('anyHarvest')
     };
     return $http.get(url, config)
     .then(res => {
-      $log.log('get /api/profiles/:id success');
+      $log.log('get /api/profiles/me success');
       return res.data;
     });
   };

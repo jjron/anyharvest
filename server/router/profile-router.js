@@ -34,10 +34,10 @@ profileRouter.post('/api/profiles', bearerAuth, jsonParser, function(req, res, n
     return next(createError(400, 'requires userName'));
 
   new Profile({
-    userName: req.body.userName,
-    email: req.body.email,
-    profilePic: req.body.profilePic,
-    listings: req.body.listing,
+    userName: req.user.username,
+    email: req.user.email,
+    //profilePic: req.body.profilePic,
+    //listings: req.body.listing,
     zipCode: req.body.zipCode,
     userID: req.user._id.toString(),
   })
@@ -85,12 +85,19 @@ profileRouter.put('/api/profiles/:id/profilepic', bearerAuth, upload.single('fil
   });
 });
 
+profileRouter.get('/api/profiles/me', bearerAuth, function(req, res, next) {
+  Profile.findOne({username: req.user.username})
+  .then(profile => res.json(profile))
+  .catch(next);
+});
+
 profileRouter.get('/api/profiles/:id', function(req, res, next) {
   debug('GET /api.profiles/:id');
   Profile.findById(req.params.id)
 .then(profile => res.json(profile))
 .catch(() => next(createError(404, 'that profile does not was not found')));
 });
+
 
 profileRouter.put('/api/profiles/:id', bearerAuth, jsonParser, function(req, res, next) {
   debug('PUT /api/profiles/:id');
