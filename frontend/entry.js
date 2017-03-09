@@ -56,6 +56,7 @@ require('./container/dashboard');
 require('./container/home');
 require('./container/landing');
 require('./container/listings');
+require('./container/new-listing');
 
 // require components
 require('./component/account');
