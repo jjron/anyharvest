@@ -1,3 +1,55 @@
 <div class="listings">
 LISTINGS
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input type="text" ng-model="card.number" cc-number cc-type="cardType" ng-required="true" />
+<form name="paymentForm">
+  <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-eager-type />
+</form>
+<p ng-show="paymentForm.cardNumber.$invalid && paymentForm.cardNumber.$ccEagerType">
+  Looks like you're typing a {{paymentForm.cardNumber.$ccEagerType}} number!
+</p>
+<p ng-show="paymentForm.cardNumber.$valid">
+  Yes, that looks like a valid {{paymentForm.cardNumber.$ccType}} number!
+</p>
+<p ng-show="paymentForm.cardNumber.$error.required">
+  You must enter a credit card number!
+</p>
+<form name="paymentForm">
+  <select ng-model="cardType" ng-options="type for type in ['Visa', 'American Express', 'MasterCard']"></select>
+  <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-type="cardType" />
+  <p ng-show="paymentForm.cardNumber.$error.ccNumberType">That's not a valid {{cardType}}</p>
+</form>
+<input type="text" ng-model="card.cvc" cc-cvc ng-required="true" />
+<input type="text" ng-model="card.cvc" cc-type="cardNumber.$ccType" ng-required="true" />
+<div cc-exp>
+  <input ng-model="card.exp_month" cc-exp-month ng-required="true" />
+  <input ng-model="card.exp_year" cc-exp-year ng-required="true" />
+</div>
