@@ -7,8 +7,19 @@ require('angular').module('anyHarvest')
   template: require('./account.html'),
   controller: ['$log', 'profileService', function ($log, profileService) {
     this.$onInit = () => {
-      this.username =
+      this.profileEditor = {zipCode: ''};
+      this.profileEditorHandleSubmit = profile => {
+        profileService.create(profile)
+        .then(profile => {
+          $log.log('success', profile);
+          this.profileEditor = {zipCode: ''};
+        })
+        .catch($log.error);
+      };
       profileService.fetch()
-    }
+      .then(profile => {
+        console.log('profile', profile);
+      });
+    };
   }],
 });
