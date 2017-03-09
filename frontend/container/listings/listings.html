@@ -29,27 +29,93 @@ LISTINGS
 
 
 
-<input type="text" ng-model="card.number" cc-number cc-type="cardType" ng-required="true" />
-<form name="paymentForm">
-  <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-eager-type />
-</form>
-<p ng-show="paymentForm.cardNumber.$invalid && paymentForm.cardNumber.$ccEagerType">
-  Looks like you're typing a {{paymentForm.cardNumber.$ccEagerType}} number!
-</p>
-<p ng-show="paymentForm.cardNumber.$valid">
-  Yes, that looks like a valid {{paymentForm.cardNumber.$ccType}} number!
-</p>
-<p ng-show="paymentForm.cardNumber.$error.required">
-  You must enter a credit card number!
-</p>
-<form name="paymentForm">
-  <select ng-model="cardType" ng-options="type for type in ['Visa', 'American Express', 'MasterCard']"></select>
-  <input type="text" ng-model="card.number" name="cardNumber" cc-number cc-type="cardType" />
-  <p ng-show="paymentForm.cardNumber.$error.ccNumberType">That's not a valid {{cardType}}</p>
-</form>
-<input type="text" ng-model="card.cvc" cc-cvc ng-required="true" />
-<input type="text" ng-model="card.cvc" cc-type="cardNumber.$ccType" ng-required="true" />
-<div cc-exp>
-  <input ng-model="card.exp_month" cc-exp-month ng-required="true" />
-  <input ng-model="card.exp_year" cc-exp-year ng-required="true" />
-</div>
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script data-require="angular.js@*" data-semver="1.3.7" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.7/angular.js"></script>
+    <script data-require="angular-credit-cards@*" data-semver="3.0.1" src="https://rawgit.com/bendrucker/angular-credit-cards/v3.0.1/release/angular-credit-cards.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-app="ccDemoApp">
+    <div class="container">
+      <h1>
+        <a>
+          Insert Credit Card Info
+        </a>
+        Demo
+      </h1>
+      <form name="ccForm">
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number">
+        </div>
+        <table class="table">
+          <tr>
+            <th>Valid</th>
+            <th>Eager Type</th>
+            <th>Type</th>
+          </tr>
+          <tr>
+            <td>
+              {{ccForm.ccNumber.$valid | yesNo}}
+            </td>
+            <td>
+              {{ccForm.ccNumber.$ccEagerType || 'Unknown'}}
+            </td>
+            <td>
+              {{ccForm.ccNumber.$ccType || 'Unknown'}}
+            </td>
+          </tr>
+        </table>
+        <div class="form-group">
+          <label for="cvc">CVC</label>
+          <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc">
+        </div>
+        <table class="table">
+          <tr>
+            <th>Valid</th>
+          </tr>
+          <tr>
+            <td>
+              {{ccForm.ccCvc.$valid | yesNo}}
+            </td>
+          </tr>
+        </table>
+        <div class="form-group">
+          <label for="card-number">Expiration</label>
+          <div class="row" cc-exp>
+            <div class="col-xs-3">
+              <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month">
+            </div>
+            <div class="col-xs-3">
+              <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year">
+            </div>
+          </div>
+        </div>
+        <table class="table">
+          <tr>
+            <th>Valid Month</th>
+            <th>Valid Year</th>
+            <th>Valid Pair</th>
+          </tr>
+          <tr>
+            <td>
+              {{ccForm.ccExpMonth.$valid | yesNo}}
+            </td>
+            <td>
+              {{ccForm.ccExpYear.$valid | yesNo}}
+            </td>
+            <td>
+              {{!ccForm.$error.ccExp | yesNo}}
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </body>
+
+</html>
