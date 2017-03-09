@@ -55,10 +55,10 @@ require('./container/company');
 require('./container/dashboard');
 require('./container/home');
 require('./container/landing');
-require('./container/listings');
+// require('./container/listings');
 require('./container/new-listing');
-require('./conatainer/photo-listing');
-require('./conatainer/photo-profile');
+require('./container/photo-listing');
+require('./container/photo-profile');
 
 // require components
 require('./component/account');
