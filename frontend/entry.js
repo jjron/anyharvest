@@ -4,8 +4,9 @@ require('./scss/main.scss');
 
 const angular = require('angular');
 const uiRouter = require('angular-ui-router');
+const ngFileUpload = require('ng-file-upload');
 
-angular.module('anyHarvest', [uiRouter])
+angular.module('anyHarvest', [uiRouter, ngFileUpload])
 .config(['$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('', '/landing');
   let routes = [
@@ -46,6 +47,7 @@ angular.module('anyHarvest', [uiRouter])
 
 // require services
 require('./service/admin-service.js');
+require('./service/photo-service.js');
 
 // require containers
 require('./container/about-us');
