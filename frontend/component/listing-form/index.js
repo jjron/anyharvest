@@ -1,10 +1,10 @@
 'use strict';
 
-require('./_forms.scss');
+require('./_listing.scss');
 
 require('angular').module('anyHarvest')
 .component('listingForm', {
-  template: require('./listing-for .html'),
+  template: require('./listing-form.html'),
   bindings: {
     listing: '<',
     handleSubmit: '<',
