@@ -1,6 +1,6 @@
 'use strict';
 
-require('./_forms.scss');
+require('./_login.scss');
 
 require('angular').module('anyHarvest')
 .component('login', {

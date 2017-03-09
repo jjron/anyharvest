@@ -1,13 +1,17 @@
 @import  "../../scss/_theme.scss";
-.header {
+.page-header {
   background: $c-greylight;
-  padding: $s-pad;
-}
-.logo {
-  margin-left: $s-margin-left;
-  margin-right: $s-margin-right;
-  width: 80%;
-}
-.container {
   width: 100%;
+  margin: 0;
+  padding: $s-pad;
+  .logo {
+    margin-left: $s-margin-left * 10;
+  }
+  .navbar {
+    background: $c-greylight;
+    border: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }

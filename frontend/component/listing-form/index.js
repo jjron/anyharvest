@@ -1,6 +1,6 @@
 'use strict';
 
-require('./_forms.scss');
+require('./_listing.scss');
 
 require('angular').module('anyHarvest')
 .component('listingForm', {
