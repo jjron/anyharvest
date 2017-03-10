@@ -1,23 +1,23 @@
 <div class="listings">
   <dash-nav></dash-nav>
   <ul>
-    <li>
+    <li ng-repeat="item in $ctrl.listings track by $index">
       <one-listing
-      listing="$ctrl.selected">
+      listing="item">
       </one-listing>
+      <button
+      class="btn btn-primary"
+        ng-click="item.showForm = !item.showForm">
+        👀Buy Now!👀
+      </button>
+      <credit-card
+      ng-if="item.showForm"
+      listing="item"
+      > </credit-card>
     </li>
   </ul>
 
-<button
-class="btn btn-primary"
-  ng-click="$ctrl.showForm = !$ctrl.showForm">
-  👀Buy Now!👀
-</button>
 
-  <credit-card
-  ng-if="$ctrl.showForm"
-  listingID="$ctrl.test"
-  >
 
-  </credit-card>
+
 </div>

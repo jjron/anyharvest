@@ -9,10 +9,10 @@ require('angular').module('anyHarvest')
     this.$onInit = () => {
       this.test = 'BOOYA';
 
-      console.log('hello')
+      console.log('hello');
       listingService.fetchAll()
       .then(listings => {
-        console.log('listings', listings  )
+        console.log('listings', listings  );
         this.listings = listings;
         this.selected = this.listings[0];
         $log.log('selectedListing', this.selected.product);
