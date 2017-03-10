@@ -31,7 +31,7 @@ require('angular').module('anyHarvest')
           Authorization: `Bearer ${token}`,
         },
       };
-      return $http.get(url, config)
+      return $http.get(url, config);
     })
     .then(res => {
       $log.log('get /api/profiles/me success', res.data);

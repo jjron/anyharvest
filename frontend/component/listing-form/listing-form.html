@@ -1,15 +1,12 @@
 <div class="listing-form">
   <form ng-submit="$ctrl.handleSubmit($ctrl.listing)" novalidate>
-    <input type="title" ng-model="$ctrl.listing.title" placeholder="title">
-    <input type="description" ng-model="$ctrl.listing.description" placeholder="description">
-    <input type="text" ng-model="$ctrl.listing.startingPrice" placeholder="Starting Price">
+    <input type="title" ng-model="$ctrl.listing.product" placeholder="title">
+    <input type="description" ng-model="$ctrl.listing.desc" placeholder="description">
+    <input type="text" ng-model="$ctrl.listing.price" placeholder="Starting Price">
+    <input type="text" ng-model="$ctrl.listing.zipCode" placeholder="ZipCode">
     <!-- photo upload goes here -->
-    <div class="file-select"
-    ngf-select
-    ng-model="$ctrl.photo.file">
-      Select File
-    </div>
 
-    <button> Upload </button>
+
+    <button> Submit </button>
   </form>
 </div>
