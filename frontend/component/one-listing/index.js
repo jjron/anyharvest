@@ -9,6 +9,7 @@ require('angular').module('anyHarvest')
     listing: '<',
   },
   controller: ['$log', function($log){
-    this.test = "OMG";
-  }]
+    this.test = 'OMG';
+    $log.log('something');
+  }],
 });

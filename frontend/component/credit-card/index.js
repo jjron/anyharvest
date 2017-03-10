@@ -12,7 +12,7 @@ require('angular').module('anyHarvest')
       .then(res => {
         $log.log(res, 'whats her');
         this.listing = res;
-      })
+      });
 
       // this.paymentInfo = {
       //   this.number,

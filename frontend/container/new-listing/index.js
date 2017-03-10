@@ -1,5 +1,4 @@
 'use strict';
-console.log('are we hitting here??//')
 
 require('angular').module('anyHarvest')
 .component('newListing', {
@@ -9,8 +8,8 @@ require('angular').module('anyHarvest')
 
 function NewListingController($log, authService, $location, listingService, profileService) {
   this.$onInit = () => {
-    this.test = 'boo'
-    $log.log('are we hitting he')
+    this.test = 'boo';
+    $log.log('are we hitting he');
     authService.tokenFetch()
     .then(() => $location.path('/new-listing'));
 
@@ -24,7 +23,7 @@ function NewListingController($log, authService, $location, listingService, prof
     };
 
     this.createListing = (profile, listing) => {
-      console.log('lulwat')
+      console.log('lulwat');
       listingService.create(profile, listing)
       .then(res => {
         console.log(res);
@@ -33,12 +32,10 @@ function NewListingController($log, authService, $location, listingService, prof
 
     };
 
-
-          console.log('lsdkfjlsdkfjlksdfjlksfjlkj')
-          profileService.fetch()
-          .then(profile => {
-            console.log('profile', profile);
-            this.profile = profile;
-          });
+    profileService.fetch()
+    .then(profile => {
+      console.log('profile', profile);
+      this.profile = profile;
+    });
   };
 }
