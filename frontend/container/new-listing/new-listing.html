@@ -1,5 +1,14 @@
 <div class="new-listing">
   <dash-nav></dash-nav>
-  <listing-form></listing-form>
-  </div>
+
+  <listing-form
+  listing="$ctrl.listing"
+  profile="$ctrl.profile"
+  handle-submit="$ctrl.createListing">
+
+
+
+  </listing-form>
+
+  {{ $ctrl.profile}}
 </div>
