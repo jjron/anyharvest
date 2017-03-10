@@ -46,6 +46,16 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       url: '/about-us',
       template: '<about-us></about-us>',
     },
+    {
+      name: 'account',
+      url: '/account',
+      template: '<account></account>',
+    },
+    {
+      name: 'listing-form',
+      url: '/listing-form',
+      template: '<listing-form></listing-form>',
+    },
   ];
 
   routes.forEach(route => $stateProvider.state(route));
