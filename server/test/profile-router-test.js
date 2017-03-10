@@ -22,18 +22,17 @@ describe('testing profile-router', function () {
   });
 
   describe('testing POST /api/profiles', function () {
-    before(userMock.bind(this));
+    beforeEach(userMock.bind(this));
     it('should respond with a profile', (done) => {
       superagent.post(`${baseURL}/api/profiles`)
       .send({
-        userName: 'farmerjohn',
-        email: 'farmerjohn@farmersonly.com',
         zipCode: '98116',
       })
       .set('authorization',`Bearer ${this.tempToken}`)
       .then(res => {
         expect(res.status).to.equal(200);
-        expect(res.body.userName).to.equal('farmerjohn');
+        expect(res.body.userName).to.equal(this.tempUser.username);
+        expect(res.body.email).to.equal(this.tempUser.email);
         expect(res.body.zipCode).to.equal('98116');
         expect(!!res.body.userID).to.equal(true);
         done();
@@ -41,11 +40,10 @@ describe('testing profile-router', function () {
       .catch(done);
     });
 
-    it('should return a 400 when there is no username', (done) => {
+    it('should return a 400 when there zipcode not provided', (done) => {
       superagent.post(`${baseURL}/api/profiles`)
       .send({
-        zipCode: '98116',
-        email: 'farmerjohn@farmersonly.com',
+        zipCode: '',
       })
       .set('authorization', `Bearer ${this.tempToken}`)
       .then(done)
@@ -66,8 +64,8 @@ describe('testing profile-router', function () {
       superagent.get(url)
       .then(res => {
         expect(res.status).to.equal(200);
-        expect(res.body.email).to.equal('farmerjohn@farmersonly.com');
-        expect(res.body.userName).to.equal('farmerjohn');
+        expect(res.body.email).to.equal(this.tempProfile.email);
+        expect(res.body.userName).to.equal(this.tempProfile.userName);
         expect(res.body.zipCode).to.equal('98116');
         expect(!!res.body.userID).to.equal(true);
         done();
@@ -93,7 +91,7 @@ describe('testing profile-router', function () {
     it('should update a profile', done => {
       let url = `${baseURL}/api/profiles/${this.tempProfile._id.toString()}`;
       superagent.put(url)
-      .send({userName: 'agroGurl'})
+      .send({userName: 'farmerguy'})
       .set('Authorization', `Bearer ${this.tempToken}`)
       .then(res => {
         expect(res.status).to.equal(200);
@@ -102,7 +100,7 @@ describe('testing profile-router', function () {
       .catch(done);
     });
   });
-  
+
   describe('testing PUT /api/profiles/:id/profilepic', function() {
     beforeEach(userMock.bind(this));
     beforeEach(profileMock.bind(this));

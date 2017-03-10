@@ -38,8 +38,6 @@ profileRouter.post('/api/profiles', bearerAuth, jsonParser, function(req, res, n
   new Profile({
     userName: req.user.username,
     email: req.user.email,
-    //profilePic: req.body.profilePic,
-    //listings: req.body.listing,
     zipCode: req.body.zipCode,
     userID: req.user._id.toString(),
   })
