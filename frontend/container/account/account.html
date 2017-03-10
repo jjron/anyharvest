@@ -1,23 +1,25 @@
 <div class="account">
-
   <dash-nav></dash-nav>
-
-  <div class="login col-md-5 pull-right">
+  <div class="col-md-offset-1 col-md-6 pull-right">
   <h1>Profile</h1>
   <photo-profile profile="$ctrl.profile"></photo-profile>
 
   <img ng-src="{{$ctrl.profileEditor.photoURI}}">
 
-  <form ng-if="!$ctrl.profile" novalidate ng-submit="$ctrl.profileEditorHandleSubmit($ctrl.profileEditor)">
-    <input type="text" ng-model="$ctrl.profileEditor.zipCode" placeholder="Zip Code">
-    <button type="submit">Submit</button>
+  <form class="form-horizontal" ng-if="!$ctrl.profile" novalidate ng-submit="$ctrl.profileEditorHandleSubmit($ctrl.profileEditor)">
+    <div class="form-group">
+      <div class="input-group col-md-8">
+      <input type="text" class="form-control" ng-model="$ctrl.profileEditor.zipCode" placeholder="Zip Code">
+    </div>
+    </div>
+      <button type="submit" class="btn btn-default">submit</button>
   </form>
 
-  <form ng-if="$ctrl.profile && !$ctrl.profile.photoURI" ng-submit="$ctrl.uploadPicHandleSubmit($ctrl.uploadPic)">
+  <form class="form-horizontal" ng-if="$ctrl.profile && !$ctrl.profile.photoURI" ng-submit="$ctrl.uploadPicHandleSubmit($ctrl.uploadPic)">
     <div ngf-select class="btn btn-default" ng-model="$ctrl.uploadPic.file">
       choose pic
     </div>
-    <button type="submit"> Upload pic </button>
+    <button type="submit" class="btn btn-default">upload pic</button>
   </form>
 
   <div ng-if="$ctrl.profile">
