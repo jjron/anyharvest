@@ -7,7 +7,14 @@
     </li>
   </ul>
 
+<button
+class="btn btn-primary"
+  ng-click="$ctrl.showForm = !$ctrl.showForm">
+  👀Buy Now!👀
+</button>
+
   <credit-card
+  ng-if="$ctrl.showForm"
   listingID="$ctrl.test"
   >
 
