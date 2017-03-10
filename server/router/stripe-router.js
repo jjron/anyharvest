@@ -22,7 +22,7 @@ stripeRouter.post('/api/charge/:listingID', bearerAuth, jsonParser, function(req
   });
 
   stripe.customers.create({
-    email: 'foo-customer@example.com',
+    email: req.user.email,
   })
   .then(customer => {
     return stripe.customers.createSource(customer.id, {
