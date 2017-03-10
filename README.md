@@ -1,6 +1,6 @@
 ![logo](https://raw.githubusercontent.com/jjron/anyharvest/9a2a2203dfb170c50d1410d066f95cafb7fa7369/assets/logo_assets/anyharvest.png)
 
-[![Coverage Status](https://coveralls.io/repos/github/jjron/anyharvest/badge.svg?branch=master)](https://coveralls.io/github/jjron/anyharvest?branch=master) [![Build Status](https://travis-ci.org/jjron/anyharvest.svg?branch=master)](https://travis-ci.org/jjron/anyharvest
+[![Coverage Status](https://coveralls.io/repos/github/jjron/anyharvest/badge.svg?branch=master)](https://coveralls.io/github/jjron/anyharvest?branch=master) [![Build Status](https://travis-ci.org/jjron/anyharvest.svg?branch=master)](https://travis-ci.org/jjron/anyharvest)
 
 
 ### Team
