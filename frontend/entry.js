@@ -22,24 +22,24 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       template: '<dashboard></dashboard>',
     },
     {
-      name: 'new-listings',
-      url: '/new-listing',
-      template: '<new-listing></new-listing>',
-    },
-    {
-      name: 'home',
-      url: '/home',
+      name: 'market',
+      url: '/market',
       template: '<listings></listings>',
-    },
-    {
-      name: 'company',
-      url: '/company',
-      template: '<company></company>',
     },
     {
       name: 'oneListing',
       url: '/one-listing',
       template: '<one-listing></one-listing>',
+    },
+    {
+      name: 'home',
+      url: '/home',
+      template: '<home></home>',
+    },
+    {
+      name: 'company',
+      url: '/company',
+      template: '<company></company>',
     },
     {
       name: 'about-us',

@@ -14,6 +14,7 @@ function LandingController($log, authService, $location) {
     .then(() => $location.path('/dashboard'));
     this.loginUser = {email: '', password: ''};
     this.loginHandleSubmit = (user) => {
+      console.log('user',user)
       authService.login(user)
       .then(token => {
         $log.log('success', token);

@@ -5,10 +5,18 @@ require('./_account.scss');
 require('angular').module('anyHarvest')
 .component('account', {
   template: require('./account.html'),
-  controller: ['$log', 'profileService', 'photoService', function($log, profileService, photoService) {
+  controller: ['$log', 'profileService', 'photoService', '$location', 'authService',
+  function($log, profileService, photoService, $location, authService) {
     this.$onInit = () => {
       this.profile = null;
       this.profileEditor = {zipCode: ''};
+
+      this.logout = () => {
+        authService.logout()
+        .then(() => {
+          $location.path('/landing');
+        });
+      };
 
       this.profileEditorHandleSubmit = profile => {
         profileService.create(profile)

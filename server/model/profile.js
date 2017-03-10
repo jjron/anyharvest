@@ -9,7 +9,7 @@ const profileSchema = mongoose.Schema({
   zipCode: {type: String, required: true},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   photoURI: {type: String},
-  imageKey: {type: String, sparse: true},
+  //imageKey: {type: String, sparse: true},
 });
 
 module.exports = mongoose.model('profile', profileSchema);

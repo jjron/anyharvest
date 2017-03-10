@@ -3,8 +3,9 @@
 require('angular').module('anyHarvest')
 .service('creditCardService', ['$log', '$http', 'authService', function($log, $http, authService){
   let creditCardService = {};
-  creditCardService.makePayment = (cardData) => {
-    let url = `${__API_URL__}/api/charge/58c23d60f320221a8fe286a5`;
+  creditCardService.makePayment = (cardData, listing) => {
+    // backupID: 58c23d60f320221a8fe286a5
+    let url = `${__API_URL__}/api/charge/${listing._id}`;
     let config = {
       headers: {
         'Content-Type': 'application/json',
