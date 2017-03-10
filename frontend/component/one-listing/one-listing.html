@@ -1,6 +1,14 @@
 <li class="one-listing">
-  ONE LISTING
-    <h3>{{listingItemCtrl.listing.title}}</h3>
-    <p>{{listingItemCtrl.listing.description}}</p>
-    <button type="button" class="btn btn-default">buy</button>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">product: {{listingItemCtrl.listing.title}}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="container">
+        <img src="./../../../assets/images/temp.png" class="col-md-2 img-responsive" alt="Responsive image">
+        <p>description: {{listingItemCtrl.listing.description}}</p>
+        <button type="button" class="btn btn-default">buy</button>
+      </div>
+    </div>
+  </div>
 </li>
