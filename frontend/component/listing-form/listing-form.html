@@ -1,12 +1,27 @@
-<div class="listing-form">
-  <form ng-submit="$ctrl.handleSubmit($ctrl.listing)" novalidate>
-    <input type="title" ng-model="$ctrl.listing.product" placeholder="title">
-    <input type="description" ng-model="$ctrl.listing.desc" placeholder="description">
-    <input type="text" ng-model="$ctrl.listing.price" placeholder="Starting Price">
-    <input type="text" ng-model="$ctrl.listing.zipCode" placeholder="ZipCode">
+<div class="listing-form col-md-offset-1 col-md-6 pull-right">
+  <h3>add new listing</h3>
+  <form class="form-horizontal" ng-submit="$ctrl.handleSubmit($ctrl.listing)" novalidate>
+    <div class="form-group">
+      <div class="input-group col-md-8">
+      <input type="text" class="form-control" ng-model="$ctrl.listing.product" placeholder="title">
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group col-md-8">
+      <input type="text" class="form-control" ng-model="$ctrl.listing.desc" placeholder="description">
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group col-md-8">
+      <input type="text" class="form-control" ng-model="$ctrl.listing.price" placeholder="Starting Price">
+    </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group col-md-8">
+      <input type="text" class="form-control" ng-model="$ctrl.listing.zipCode" placeholder="ZipCode">
+    </div>
+    </div>
     <!-- photo upload goes here -->
-
-
-    <button> Submit </button>
+    <button type="button" class="btn btn-default">submit</button>
   </form>
 </div>

@@ -27,6 +27,11 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       template: '<listings></listings>',
     },
     {
+      name: 'new-listings',
+      url: '/new-listing',
+      template: '<new-listing></new-listing>',
+    },
+    {
       name: 'home',
       url: '/home',
       template: '<home></home>',
