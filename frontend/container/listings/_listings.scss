@@ -1,1 +1,13 @@
 @import  "../../scss/_theme.scss";
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+.panel-default > .panel-heading {
+  background: $c-ltblue;
+  color: $c-dkorange;
+}
+.panel-body {
+  background: $c-greylight;
+}

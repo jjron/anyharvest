@@ -1,8 +1,10 @@
 @import  "../../scss/_theme.scss";
 
 .dash-nav {
-  background: $c-grey;
+  background: $c-ltblue;
   margin-left: 0;
+  height: 500px;
+
   .nav {
     ul {
       list-style: none;
@@ -11,10 +13,11 @@
       margin-left: $s-margin-left;
     }
   }
-  a {
-    color: $c-greylight;
+  li > a {
+    color: $c-dkorange;
   }
-  a:hover {
-    color: $c-greydark;
+  li > a:hover {
+    color: $c-ltorange;
+    background: $c-dkblue;
   }
 }

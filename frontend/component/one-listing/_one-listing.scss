@@ -3,3 +3,23 @@
 .panel ul{
   list-style: none
 }
+h3 {
+  color: $c-dkorange;
+}
+p {
+  color: $c-dkorange;
+}
+button.btn.btn-default {
+  background: $c-dkblue;
+  a {
+    color: $c-ltorange;
+  }
+
+}
+button.btn.btn-default:hover {
+  background: $c-ltblue;
+  a {
+    color: $c-dkorange;
+    text-decoration: none;
+  }
+}

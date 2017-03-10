@@ -5,10 +5,17 @@
   box-sizing: border-box;
 }
 .input-group-btn {
+  .btn {
+    background: $c-dkblue;
+
+  }
+  .btn-default:hover {
+    background: $c-ltblue;
+  }
 }
 .glyphicon {
   margin-right: $s-margin-right;
-  color: $c-greylight;
+  color: $c-dkorange;
   .glyphicon-search {
   }
 }
