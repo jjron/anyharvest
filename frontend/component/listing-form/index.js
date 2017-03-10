@@ -6,6 +6,7 @@ require('angular').module('anyHarvest')
 .component('listingForm', {
   template: require('./listing-form.html'),
   bindings: {
+    profile: '<',
     listing: '<',
     handleSubmit: '<',
   },
