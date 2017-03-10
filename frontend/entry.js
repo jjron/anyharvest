@@ -57,9 +57,9 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       template: '<account></account>',
     },
     {
-      name: 'listing-form',
-      url: '/listing-form',
-      template: '<listing-form></listing-form>',
+      name: 'new-listing',
+      url: '/new-listing',
+      template: '<new-listing></new-listing>',
     },
     {
       name: 'credit-card',
@@ -77,6 +77,7 @@ require('./service/admin-service.js');
 require('./service/photo-service.js');
 require('./service/profile-service.js');
 require('./service/credit-card-service.js');
+require('./service/listing-service.js');
 
 // require containers
 require('./container/about-us');

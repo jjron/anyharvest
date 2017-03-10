@@ -11,7 +11,7 @@ const listingSchema = mongoose.Schema({
   photoID: {type: mongoose.Schema.Types.ObjectId},
   userID: {type: mongoose.Schema.Types.ObjectId, required: true},
   photoURI: {type: String},
-  imageKey: {type: String, unique: true},
+  image: {type: String, sparse: true},
 });
 
 module.exports = mongoose.model('listing', listingSchema);

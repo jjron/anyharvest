@@ -48,7 +48,7 @@ listingRouter.post('/api/profile/:profileID/listings', bearerAuth, jsonParser, f
       desc: req.body.desc,
       price: req.body.price,
       zipCode: req.body.zipCode,
-      photoID: req.body.photoID,
+      //photoID: req.body.photoID,
       userID: req.user._id.toString(),
     }).save();
   })
@@ -119,7 +119,7 @@ listingRouter.put('/api/listings/:id/listingpic', bearerAuth, upload.single('fil
   .then(s3data => {
     del([`${dataDir}/*`]);
     var photoData = {
-      imageKey: s3data.Key,
+      image: s3data.Key,
       photoURI: s3data.Location,
     };
     Listing.findOneAndUpdate({userID: req.user._id.toString(), _id:req.params.id}, photoData, {new: true})
