@@ -1,9 +1,9 @@
 <div class="home">
   PRODUCT LISTINGS
   <ul>
-    <li>
+    <li ng-repeat="item in $ctrl.listings track by $index">
       <one-listing
-      listing="$ctrl.selected">
+      listing="item">
       </one-listing>
     </li>
   </ul>
