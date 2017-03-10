@@ -51,7 +51,6 @@ function authService($log, $q, $window, $http) {
   };
 
   authService.signup = function(user){
-    console.log('cool beans')
     let url = `${__API_URL__}/api/signup`;
     let config = {
       headers: {
