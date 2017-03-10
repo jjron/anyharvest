@@ -22,5 +22,16 @@ function LandingController($log, authService, $location) {
       })
       .catch($log.error);
     };
+
+    this.signupUser = {email: '', password: '', username: ''};
+    this.signupHandleSubmit = (user) => {
+      authService.signup(user)
+      .then(token => {
+        $log.log('success', token);
+        this.signupUser = {email: '', password: '', username: ''};
+        $location.path('/dashboard');
+      })
+      .catch($log.error);
+    };
   };
 }

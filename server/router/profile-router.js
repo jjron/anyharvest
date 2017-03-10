@@ -30,8 +30,10 @@ function s3Promise(params){
 
 profileRouter.post('/api/profiles', bearerAuth, jsonParser, function(req, res, next){
   debug('POST /api/profiles');
-  if(!req.body.userName)
-    return next(createError(400, 'requires userName'));
+
+
+
+  console.log('req.user is', req.user);
 
   new Profile({
     userName: req.user.username,
@@ -86,7 +88,7 @@ profileRouter.put('/api/profiles/:id/profilepic', bearerAuth, upload.single('fil
 });
 
 profileRouter.get('/api/profiles/me', bearerAuth, function(req, res, next) {
-  Profile.findOne({username: req.user.username})
+  Profile.findOne({userName: req.user.username})
   .then(profile => res.json(profile))
   .catch(next);
 });

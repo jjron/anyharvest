@@ -46,6 +46,17 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       url: '/about-us',
       template: '<about-us></about-us>',
     },
+    {
+      name: 'account',
+      url: '/account',
+      template: '<account></account>',
+    },
+    {
+      name: 'listing-form',
+      url: '/listing-form',
+      template: '<listing-form></listing-form>',
+    },
+
   ];
 
   routes.forEach(route => $stateProvider.state(route));
@@ -54,6 +65,7 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
 // require services
 require('./service/admin-service.js');
 require('./service/photo-service.js');
+require('./service/profile-service.js');
 
 // require containers
 require('./container/about-us');
@@ -65,9 +77,9 @@ require('./container/listings');
 require('./container/new-listing');
 require('./container/photo-listing');
 require('./container/photo-profile');
+require('./container/account');
 
 // require components
-require('./container/account');
 require('./component/dash-nav');
 require('./component/header');
 require('./component/header');

@@ -1,7 +1,7 @@
 'use strict';
 
 require('angular').module('anyHarvest')
-.service('galleryService', ['$log', '$http', 'authService', function($log, $http, authService) {
+.service('profileService', ['$log', '$http', 'authService', function($log, $http, authService) {
   let profileService = {};
   profileService.create = (profile) => {
     let url = `${__API_URL__}/api/profiles`;
@@ -11,7 +11,7 @@ require('angular').module('anyHarvest')
         Accept: 'application/json',
       },
     };
-    return authService.fetchToken()
+    return authService.tokenFetch()
     .then(token => {
       config.headers.Authorization = `Bearer ${token}`;
       return $http.post(url, profile, config);
@@ -22,15 +22,19 @@ require('angular').module('anyHarvest')
     });
   };
   profileService.fetch = () => {
-    let url = `${__API_URL__}/api/profiles/me`;
-    let config = {
-      headers: {
-        Accept: 'application/json',
-      },
-    };
-    return $http.get(url, config)
+    return authService.tokenFetch()
+    .then(token => {
+      let url = `${__API_URL__}/api/profiles/me`;
+      let config = {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      return $http.get(url, config)
+    })
     .then(res => {
-      $log.log('get /api/profiles/me success');
+      $log.log('get /api/profiles/me success', res.data);
       return res.data;
     });
   };
