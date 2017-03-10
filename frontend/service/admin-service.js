@@ -44,7 +44,7 @@ function authService($log, $q, $window, $http) {
     try {
       delete $window.localStorage.token;
       // delete authService.token;
-      authToken = null
+      authToken = null;
       return $q.resolve();
     } catch(err) {
       return $q.reject(err);
