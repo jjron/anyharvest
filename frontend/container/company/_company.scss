@@ -1,8 +1,9 @@
 @import  "../../scss/_theme.scss";
 
-.jumbotron img {
+.jumbotron h1, h4{
+  color: $c-dkorange;
 
 }
 .hl {
-  border-top: 2px $c-black solid;
+  border-top: 2px $c-dkorange solid;
 }

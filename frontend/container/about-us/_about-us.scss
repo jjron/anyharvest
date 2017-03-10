@@ -1,1 +1,15 @@
 @import  "../../scss/_theme.scss";
+h3 {
+  color: $c-dkorange;
+}
+a {
+  .btn-default {
+    background: $c-dkblue;
+    color: $c-ltorange;
+
+  }
+  .btn-default:hover {
+    background: $c-ltblue;
+    color: $c-dkorange;
+  }
+}

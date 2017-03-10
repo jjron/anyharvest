@@ -11,10 +11,12 @@
       display: inline-block;
     }
   }
-  a {
-    color: $c-grey;
+  li > a {
+    color: $c-dkorange;
   }
-  a:hover {
-    color: $c-greydark;
+  li > a:hover {
+    color: $c-orange;
+    background: $c-ltblue;
   }
+
 }
