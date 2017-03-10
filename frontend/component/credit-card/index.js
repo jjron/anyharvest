@@ -4,19 +4,15 @@ require('angular').module('anyHarvest')
   template: require('./credit-card.html'),
   bindings: {
     listingID: '<',
+    listing: '<',
   },
   controller: ['$log', 'creditCardService', 'listingService', function($log, creditCardService, listingService){
     this.$onInit = () => {
 
-      listingService.fetchAll()
-      .then(res => {
-        $log.log(res, 'whats her');
-        this.listing = res;
-      });
-
-      this.makePayment = (listing) => {
-        creditCardService.makePayment(listing, this.listing._id)
+      this.makePayment = (cardData) => {
+        creditCardService.makePayment(cardData, this.listing)
         .then(res => {
+          $log.log(this.listing);
           $log.log(res, 'payment success!');
           alert('successful payment');
         });
@@ -28,5 +24,4 @@ require('angular').module('anyHarvest')
   return function (boolean) {
     return boolean ? 'Yes' : 'No';
   };
-
 });
