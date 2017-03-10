@@ -76,6 +76,7 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
 require('./service/admin-service.js');
 require('./service/photo-service.js');
 require('./service/profile-service.js');
+require('./service/credit-card-service.js');
 
 // require containers
 require('./container/about-us');
