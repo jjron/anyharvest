@@ -5,7 +5,7 @@ require('angular').module('anyHarvest')
   let photoService = {};
 
   photoService.listingpic = (listing, photo) => {
-    return authService.fetchToken()
+    return authService.tokenFetch()
     .then(token => {
       let url = `${__API_URL__}/api/listings/${listing._id}/listingpic`;
       let headers = {
@@ -25,7 +25,7 @@ require('angular').module('anyHarvest')
   };
 
   photoService.profilepic = (profile, photo) => {
-    return authService.fetchToken()
+    return authService.tokenFetch()
     .then(token => {
       let url = `${__API_URL__}/api/profiles/${profile._id}/profilepic`;
       let headers = {
@@ -36,6 +36,7 @@ require('angular').module('anyHarvest')
       return Upload.upload({
         url,
         headers,
+        method: 'PUT',
         data: {
           file: photo.file,
         },

@@ -10,6 +10,7 @@
     "start": "node main.js",
     "heroku-postbuild": "./node_modules/webpack/bin/webpack.js",
     "watch": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
+    "bwatch": "./node_modules/nodemon/bin/nodemon.js main.js",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha ./server/test",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls ",
     "lint": "./node_modules/eslint/bin/eslint.js .",
@@ -73,5 +74,8 @@
     "webpack": "^2.2.1",
     "webpack-clean-plugin": "^0.2.3",
     "webpack-dev-server": "^2.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
