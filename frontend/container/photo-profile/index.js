@@ -13,6 +13,7 @@ require('angular').module('anyHarvest')
       this.uploadHandleSubmit = () => {
         photoService.profilepic(this.profile, this.uploadPhoto)
         .then(photo => {
+          $log.log(photo);
           this.profile.profilePic = photo;
           $log.log('Success', photo);
           this.uploadPhoto = {file: ''};
