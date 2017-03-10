@@ -14,15 +14,8 @@ require('angular').module('anyHarvest')
         this.listing = res;
       });
 
-      // this.paymentInfo = {
-      //   this.number,
-      //   this.exp_month,
-      //   this.exp_year,
-      //   this.cvc,
-      // }
-
       this.makePayment = (listing) => {
-        creditCardService.makePayment(listing)
+        creditCardService.makePayment(listing, this.listing._id)
         .then(res => {
           $log.log(res, 'payment success!');
           alert('successful payment');

@@ -1,7 +1,5 @@
 <div class="listing-form col-md-offset-1 col-md-6 pull-right">
   <h3>add new listing</h3>
-  //<!-- TODO:  -->
-  {{ $ctrl }}
   <form class="form-horizontal" ng-submit="$ctrl.handleSubmit($ctrl.profile, $ctrl.listing)" novalidate>
     <div class="form-group">
       <div class="input-group col-md-8">
@@ -25,9 +23,9 @@
     </div>
     <button type="submit">Submit Listing</button>
     <!-- photo upload goes here -->
-    <div class="file-select" ngf-select ng-model="$ctrl.photo.file">
+    <!-- <div class="file-select" ngf-select ng-model="$ctrl.photo.file">
       Select File
     </div>
-    <button type="button" class="btn btn-default">Upload</button>
+    <button type="button" class="btn btn-default">Upload</button> -->
   </form>
 </div>

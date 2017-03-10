@@ -23,6 +23,10 @@
   </form>
 
   <div ng-if="$ctrl.profile">
+    <button
+      ng-click="$ctrl.logout()"> 
+      logout
+    </button>
     <p> {{ $ctrl.profile.userName }} </p>
     <p> {{ $ctrl.profile.email }} </p>
     <p> {{ $ctrl.profile.zipCode }} </p>

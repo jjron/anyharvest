@@ -1,18 +1,13 @@
 <li class="one-listing">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">product: {{ $ctrl.listing }}</h3>
+      <h3 class="panel-title">product: {{ $ctrl.listing.product }} </h3>
     </div>
     <div class="panel-body">
       <div class="container">
         <img src="./../../../assets/images/temp.png" class="col-md-2 img-responsive" alt="Product image">
         <p>description: {{ $ctrl.listing.desc }}</p>
         <p>price: {{ $ctrl.listing.price }}</p>
-        <!-- <credit-card
-        listingID="$ctrl.listing.id"
-        >
-        </credit-card> -->
-        <!-- <button type="button" class="btn btn-default"><a href="./#!/credit-card">buy</a></button> -->
       </div>
     </div>
   </div>

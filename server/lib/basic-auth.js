@@ -17,6 +17,8 @@ module.exports = function(req, res, next) {
   let username = usernameAndPassword[0];
   let password = usernameAndPassword[1];
 
+  console.log('username', username);
+  console.log('password', password);
   User.findOne({username: username})
   .then(user => {
     return user.comparePasswordHash(password);

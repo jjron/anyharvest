@@ -43,7 +43,8 @@ function authService($log, $q, $window, $http) {
   authService.logout = () => {
     try {
       delete $window.localStorage.token;
-      delete authService.token;
+      // delete authService.token;
+      authToken = null
       return $q.resolve();
     } catch(err) {
       return $q.reject(err);
@@ -67,7 +68,7 @@ function authService($log, $q, $window, $http) {
   };
   authService.login = (user) => {
     let url = `${__API_URL__}/api/login`;
-    let encoded = $window.btoa(`${user.email}:${user.password}`);
+    let encoded = $window.btoa(`${user.username}:${user.password}`);
     let config = {
       headers: {
         Accept: 'application/json',
