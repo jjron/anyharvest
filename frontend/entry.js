@@ -56,6 +56,11 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       url: '/listing-form',
       template: '<listing-form></listing-form>',
     },
+    {
+      name: 'credit-card',
+      url: '/credit-card',
+      template: '<credit-card></credit-card>',
+    },
 
   ];
 
