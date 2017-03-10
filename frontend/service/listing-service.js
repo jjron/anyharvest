@@ -22,11 +22,20 @@ require('angular').module('anyHarvest')
     });
   };
 
+  listingService.fetchAll = () => {
+    let url = `${__API_URL__}/api/listings`;
+    let config = {
+      headers: {Accept: 'application/json'},
+    };
+    return authService.tokenFetch()
+    .then(token => {
+      config.headers.Authorization = `Bearer ${token}`;
+      return $http.get(url, config);
+    })
+    .then(res => {
+      $log.log('get /api/listings, success');
+      return res.data;
+    });
+  };
   return listingService;
-  // listingService.fetchOne = () => {
-  //   return authService.tokenFetch()
-  //   .then(token => {
-  //     let url =>
-  //   })
-  // }
 }]);

@@ -22,11 +22,6 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
       template: '<dashboard></dashboard>',
     },
     {
-      name: 'listings',
-      url: '/listings',
-      template: '<listings></listings>',
-    },
-    {
       name: 'new-listings',
       url: '/new-listing',
       template: '<new-listing></new-listing>',
@@ -34,7 +29,7 @@ angular.module('anyHarvest', [uiRouter, ngFileUpload, creditCards])
     {
       name: 'home',
       url: '/home',
-      template: '<home></home>',
+      template: '<listings></listings>',
     },
     {
       name: 'company',
@@ -93,7 +88,6 @@ require('./container/account');
 
 // require components
 require('./component/dash-nav');
-require('./component/header');
 require('./component/header');
 require('./component/listing-form');
 require('./component/login-form');
